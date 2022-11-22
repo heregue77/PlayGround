@@ -11,15 +11,22 @@ public class Main {
         Algorithm al = new Algorithm(b.board);
 
         while (!al.gameOver(b.cnt)) {
-            if (al.Pass(null)) {
+            al.displayGame();
+            if (al.Pass(1)) {
                 st = new StringTokenizer(br.readLine());
-                int x = Integer.parseInt(st.nextToken());
-                int y = Integer.parseInt(st.nextToken());
+                int x = Integer.parseInt(st.nextToken()) - 1;
+                int y = Integer.parseInt(st.nextToken()) - 1;
                 b.board[x][y] = 1;
-                al.playerUse(b.board, x, y);
+                al.displayGame();
+                al.playerUse(x, y, -1);
+                al.displayGame();
                 b.cnt--;
             }
-            al.computerUse(b.board);
+            if (al.Pass(-1)) {
+                al.computerUseRotate();
+                al.displayGame();
+                b.cnt--;
+            }
         }
 
         al.whoIsWinner();
