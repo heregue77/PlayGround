@@ -1,5 +1,5 @@
 public class Board {
-    public int cnt = 64;
+    public int cnt = 60;
     public int[][] board = new int[8][8];
 
     public Board() {
